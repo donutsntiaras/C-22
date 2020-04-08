@@ -8,6 +8,7 @@ const Bodies = Matter.Bodies;
 
 var engine, world; 
 var boxes = [];
+var baskets = [];
 var gSlider;
 var land;
  
@@ -28,9 +29,12 @@ function setup() {
 }
  
 function mousePressed() {
-    if (mouseY < 350) {
+    if (mouseY < 355 && mouseY > 175) {
         // Every time a mouse press occures create a new box.
       boxes.push(new box(mouseX,mouseY,random(5,60),random(8,50)));
+    }
+    else if (mouseY < 175 && mouseY > 0) {
+       baskets.push(new particle(mouseX,mouseY,random(10,30)));
     }
 }
  
@@ -50,6 +54,10 @@ function draw() {
     // Use a for loop to show all the boxes
     for (var i = 0; i < boxes.length; i++) {
         boxes[i].show();
+    }
+
+    for (var j = 0; j < baskets.radius; j++){
+        baskets[j].display();
     }
 }
  
